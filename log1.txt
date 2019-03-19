@@ -1,0 +1,12 @@
+    1  ls
+    2  exit
+    3  ls
+    4  git clone https://github.com/KJ-Waller/ML-res-urrect.git
+    5  ls
+    6  cd ML-res-urrect/
+    7  ls
+    8  vim RESNET-3.py 
+    9  python3 RESNET-3.py 
+   10  vim RESNET-3.py 
+   11  python3 RESNET-3.py 
+   12  history > log1.txt

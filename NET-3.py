@@ -15,7 +15,7 @@ transform = torchvision.transforms.Compose([
 train_set = torchvision.datasets.CIFAR10('../data/', train=True, transform=transform, download=True)
 test_set = torchvision.datasets.CIFAR10('../data/', train=False, transform=transform)
 
-num_epochs = 5
+num_epochs = 125
 batch_size = 50
 num_classes = 10
 learning_rate = 0.0005 #68%
