@@ -15,7 +15,7 @@ transform = torchvision.transforms.Compose([
 train_set = torchvision.datasets.CIFAR10('../data/', train=True, transform=transform, download=True)
 test_set = torchvision.datasets.CIFAR10('../data/', train=False, transform=transform)
 
-num_epochs = 5
+num_epochs = 125
 batch_size = 50
 num_classes = 10
 learning_rate = 0.0005 #68%
@@ -154,4 +154,5 @@ with torch.no_grad():
 
     print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
-torch.save(model.state_dict(), './modelmk3.pt')
+torch.save(model.state_dict(), './resnet3-final.pt')
+model.load_state_dict(torch.load('./resnet3-final.pt'))
