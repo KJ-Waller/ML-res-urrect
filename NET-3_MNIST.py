@@ -95,7 +95,7 @@ class CIFARNET(nn.Module):
             nn.AvgPool2d(8,1,1)
         )
         
-        self.fc1 = nn.Linear(22*22*128, num_classes)
+        self.fc1 = nn.Linear(27*27*128, num_classes)
         
     def forward(self, x):
         x = self.reslayer1(x)
@@ -147,5 +147,5 @@ with torch.no_grad():
 
     print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
-torch.save(model.state_dict(), './net3-final2803.pt')
-model.load_state_dict(torch.load('./net3-final2803.pt'))
+torch.save(model.state_dict(), './net3-MNIST2903.pt')
+model.load_state_dict(torch.load('./net3-MNIST2903.pt'))
