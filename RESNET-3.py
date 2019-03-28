@@ -121,25 +121,27 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 total_step = len(train_loader)
 
-model.train()
-for epoch in range(num_epochs):
-    for i, (images, labels) in enumerate(train_loader):
-        images = images.to(device)
-        labels = labels.to(device)
-        
-        # Forward
-        output = model(images)
-        loss = criterion(output, labels)
-        
-        # Backprop and Gradient Descent
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-        
-        # Print out current progress of training
-        if (i+1) % 100 == 0:
-            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, i+1, total_step, loss.item()))
+model.load_state_dict(torch.load('./resnet3-final.pt'))
 
+#model.train()
+#for epoch in range(num_epochs):
+#    for i, (images, labels) in enumerate(train_loader):
+#        images = images.to(device)
+#        labels = labels.to(device)
+#        
+#        # Forward
+#        output = model(images)
+#        loss = criterion(output, labels)
+#        
+#        # Backprop and Gradient Descent
+#        optimizer.zero_grad()
+#        loss.backward()
+#        optimizer.step()
+#        
+#        # Print out current progress of training
+#        if (i+1) % 100 == 0:
+#            print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'.format(epoch+1, num_epochs, i+1, total_step, loss.item()))
+#
 # Test the model
 model.eval()  # eval mode 
 with torch.no_grad():
@@ -155,5 +157,5 @@ with torch.no_grad():
 
     print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
-torch.save(model.state_dict(), './resnet3-final.pt')
-model.load_state_dict(torch.load('./resnet3-final.pt'))
+#torch.save(model.state_dict(), './resnet3-final.pt')
+#model.load_state_dict(torch.load('./resnet3-final.pt'))

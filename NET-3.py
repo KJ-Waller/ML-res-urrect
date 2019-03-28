@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torchvision
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+print(device)
 
 # Image preprocessing modules
 transform = torchvision.transforms.Compose([
@@ -15,7 +16,7 @@ transform = torchvision.transforms.Compose([
 train_set = torchvision.datasets.CIFAR10('../data/', train=True, transform=transform, download=True)
 test_set = torchvision.datasets.CIFAR10('../data/', train=False, transform=transform)
 
-num_epochs = 125
+num_epochs = 200
 batch_size = 50
 num_classes = 10
 learning_rate = 0.0005 #68%
@@ -144,4 +145,5 @@ with torch.no_grad():
 
     print('Test Accuracy of the model on the 10000 test images: {} %'.format(100 * correct / total))
 
-torch.save(model.state_dict(), './net3.pt')
+torch.save(model.state_dict(), './net3-final2803.pt')
+model.load_state_dict(torch.load('./net3-final2803.pt'))
